@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>MIKU</title>
+</head>
+<body>
+    <div class="bg"></div>
+    <video id="miku-video" class="video-js" controls="false" preload="auto" autoplay>
+        <source src="miku/output.mpd" type="application/dash+xml">
+    </video>
+
+    <script>
+        var player = videojs('miku-video');
+    </script>
+</body>
+</html>

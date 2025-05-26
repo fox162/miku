@@ -1,38 +1,19 @@
-<body onload="startMiku()">
-  <div class="bg"></div>
-  <video
-    id="miku-video"
-    class="video-js"
-    controls="false"
-    preload="auto"
-    autoplay
-    muted
-    playsinline
-  >
-    <source src="miku/output.mpd" type="application/dash+xml">
-  </video>
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>MIKU</title>
+</head>
+<body>
+    <div class="bg"></div>
+    <video id="miku-video" class="video-js" controls="false" preload="auto" autoplay>
+        <source src="miku/output.mpd" type="application/dash+xml">
+    </video>
 
-  <script>
-    function startMiku() {
-      const video = document.getElementById('miku-video');
-
-      // Set required properties
-      video.muted = true; // This is essential for autoplay
-      video.autoplay = true;
-      video.playsInline = true;
-
-      // DASH.js init
-      var player = dashjs.MediaPlayer().create();
-      player.initialize(video, "miku/output.mpd", true);
-
-      // Try fullscreen
-      setTimeout(() => {
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen().catch(console.warn);
-        } else if (document.documentElement.webkitRequestFullscreen) {
-          document.documentElement.webkitRequestFullscreen();
-        }
-      }, 500);
-    }
-  </script>
+    <script>
+        var player = videojs('miku-video');
+    </script>
 </body>
+</html>
